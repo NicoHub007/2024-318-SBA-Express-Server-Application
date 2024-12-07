@@ -1,16 +1,26 @@
 const React = require('react');
+const DefaultLayout = require('../layouts/default');
 
 class Edit extends React.Component {
     render() {
+        const { vegetable, id } = this.props;
         return (
-            <form action={`/api/vegetables/${this.props.id}?_method=PUT`} method='POST'>
-                Name: <input type='text' name='name' defaultValue={this.props.vegetable.name} /> <br />
-                Color: <input type='text' name='cut' defaultValue={this.props.vegetable.color} /> <br />
-                Is it Fresh:
-                {this.props.meat.isItFresh ? <input type='checkbox' name='isItFresh' defaultChecked /> : < input type='checkbox' name='readyToEat' />}<br />
-                <input type='submit' name='' value='Edit Vegetable' />
-            </form>
-        )
+            <DefaultLayout>
+                <h1>Edit Vegetable</h1>
+                <form action={`/api/vegetables/${id}?_method=PUT`} method="POST">
+                    Name: <input type="text" name="name" defaultValue={vegetable.name} /> <br />
+                    Color: <input type="text" name="color" defaultValue={vegetable.color} /> <br />
+                    Is It Fresh:
+                    {vegetable.isItFresh ? (
+                        <input type="checkbox" name="isItFresh" defaultChecked />
+                    ) : (
+                        <input type="checkbox" name="isItFresh" />
+                    )}
+                    <br />
+                    <input type="submit" value="Update Vegetable" />
+                </form>
+            </DefaultLayout>
+        );
     }
 }
 

@@ -11,12 +11,11 @@ const Meat = require('../data/meats');
 // this is only practical when you have small amounts of data
 // but you you can also use an index route and limit the number of responses
 
-router.route('/'); // '/' is the root route
 router.get('/', (req, res) => {
-    res.json(Meat);
+    res.render('meats/index', { meats: Meat });
 })
 
-// N - NEW - allows a user to input a new fruit
+// N - NEW - allows a user to input a new meat
 router.get('/new', (req, res) => {
     // the 'meats/New' in the render needs to be pointing to something in my views folder
     res.render('meats/New');
@@ -81,28 +80,24 @@ router.post('/', (req, res) => {
     res.json(Meat);
 })
 
-// E - Edit
-router.get('/id/edit', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < Meat.length) {
-        res.render('Meat/Edit', { meat: Meat[req.params.id], id: req.params.id });
+// EDIT
+router.get('/:id/Edit', (req, res) => {
+    const id = req.params.id;
+    if (id >= 0 && id < Meat.length) {
+        res.render('meats/Edit', { meat: Meat[id], id });
     } else {
-        res.send('<p>That is not a valid id</p>')
+        res.status(404).send('<p>That is not a valid id</p>');
     }
-})
+});
 
 // SHOW
-// another version of READ is called a show route
-// in this one, we can see more information on an individual piece of data
 router.get('/:id', (req, res) => {
-    // in this case, my unique identifier is going to be the array index
-    // res.send(`<div>${req.params.id}</div>`)
-    // this id can be anything, so i probably want to do some checking
-    // before accessing the array
-    if (req.params.id >= 0 && req.params.id < Meat.length) {
-        res.json(Meat[req.params.id]);
+    const id = req.params.id;
+    if (id >= 0 && id < Meat.length) {
+        res.render('meats/Show', { meat: Meat[id], id });
     } else {
-        res.send('<p>That is not a valid id</p>')
+        res.status(404).send('<p>That is not a valid id</p>');
     }
-})
+});
 
 module.exports = router;

@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
-app.use(express.static('public'));
+app.use('/styles',express.static('public/styles'));
 
 
 // below is custom middleware, meaning that we wrote the code that we wanted to be executed
@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 
 // add in the meats and vegetables routes that were imported
 app.use('/api/meats', meatRoutes); 
-//app.use('/api/vegetables', vegetableRoutes);
+app.use('/api/vegetables', vegetableRoutes);
 
 // create routes to represent the different requests
 // define the route
@@ -82,18 +82,18 @@ app.get('/index', (req, res) => {
     )
 })
 
-app.get('/meats', async (req, res) => {
+app.get('/meats', (req, res) => {
     try {
-        const foundFruits = await Fruit.find({});
+        const foundMeats =  meats.find({});
         res.status(200).render('meats/Index', { meats: foundMeats })
     } catch (err) {
         res.send(err).status(400);
     }
 })
 
-app.get('/vegetables', async (req, res) => {
+app.get('/vegetables', (req, res) => {
     try {
-        const foundFruits = await Fruit.find({});
+        const foundVegetables =  vegetables.find({});
         res.status(200).render('vegetables/Index', { vegetables: foundVegetables })
     } catch (err) {
         res.send(err).status(400);
@@ -112,7 +112,7 @@ app.get('/vegetables/new', (req, res) => {
 //E - EDIT - GET  - *  UPDATE * but this a view that allows user inputs
 app.get('/meats/:id/edit', (req, res) => {
     try {
-        const foundMeat = Meat.findById(req.params.id);
+        const foundMeat = meats.findById(req.params.id);
         res.render('meats/Edit', { meat: foundMeat });
     } catch (err) {
         res.send(err).status(400);
@@ -121,7 +121,7 @@ app.get('/meats/:id/edit', (req, res) => {
 
 app.get('/vegetables/:id/edit',  (req, res) => {
     try {
-        const foundVegetable =  Vegetable.findById(req.params.id);
+        const foundVegetable =  vegetables.findById(req.params.id);
         res.render('vegetables/Edit', { vegetable: foundVegetable });
     } catch (err) {
         res.send(err).status(400);

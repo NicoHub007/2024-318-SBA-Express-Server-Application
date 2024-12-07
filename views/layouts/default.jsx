@@ -5,14 +5,14 @@ class DefaultLayout extends React.Component {
         return (
             <html>
                 <head>
-                    <link rel="stylesheet" type="text/css" href="/styles.css" />
+                    <link rel="stylesheet" href="/styles/style.css" />
                     <title>Grilling Inventory Manager</title>
                 </head>
                 <body>
                     <header>
                         <h1>G!M | Grilling Inventory Manager</h1>
                         <nav>
-                            <a href="/meats">Meats</a> |  <a href="/vegetables">Vegetables</a> 
+                            <a href="/api/meats">Meats</a> |  <a href="/api/vegetables">Vegetables</a> 
                         </nav>
                     </header>
                     <main>

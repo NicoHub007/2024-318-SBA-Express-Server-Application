@@ -3,23 +3,23 @@ const DefaultLayout = require('../layouts/default');
 
 class Index extends React.Component {
     render() {
-        const {vegetables} = this.props;
+        const { vegetables } = this.props;
         return (
             <DefaultLayout title="Vegetables Inventory">
                 <ul>
-                    {vegetables.map((vegetable) => (
-                        <li key={vegetable.id}>
+                    {vegetables.map((vegetable, index) => (
+                        <li key={index}>
                             <img src={vegetable.image} alt={vegetable.name} />
                             <h2>{vegetable.name}</h2>
-                            <a href={`/vegetables/${vegetable.id}`}>Details</a>
-                            <a href={`/vegetables/${vegetable.id}/edit`}>Edit</a>
-                            <form action = {`/vegetables/${vegetable.id}?_method=DELETE`} method="POST">
-                                <input type="submit" value="Delete" />
+                            <a href={`/api/vegetables/${index}`}>Details</a> |
+                            <a href={`/api/vegetables/${index}/edit/`}>Edit</a>
+                            <form action={`/api/vegetables/${index}?_method=DELETE`} method="POST">
+                                <input type="submit" value="DELETE" />
                             </form>
                         </li>
                     ))}
                 </ul>
-                <a href="/vegetables/new">Add a new vegetable</a>
+                <a href="/api/vegetables/new">Add New Vegetable</a>
             </DefaultLayout>
         );
     }
