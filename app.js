@@ -26,18 +26,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
+
+// middleware to serve static files from the public folder
 app.use('/styles',express.static('public/styles'));
 app.use('/images', express.static('public/images'));
-
-// Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-app.get('/', (req, res) => {
-    res.send('Image Resizing Server is running...');
+// // route to resize images if necessary by running resizeImg.js script
+// app.get('/', (req, res) => {
+//     res.send('Image Resizing Server is running...');
+// });
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something went wrong!");
 });
 
-// below is custom middleware, meaning that we wrote the code that we wanted to be executed
+
 app.use((req, res, next) => {
     console.log('Middleware: I run for all routes');
     next();
@@ -95,30 +100,15 @@ app.get('/index', (req, res) => {
 })
 
 app.get('/meats', (req, res) => {
-    try {
-        const foundMeats =  meats.find({});
-        res.status(200).render('meats/Index', { meats: foundMeats })
-    } catch (err) {
-        res.send(err).status(400);
-    }
+    res.json(meats);
 })
 
 app.get('/vegetables', (req, res) => {
-    try {
-        const foundVegetables =  vegetables.find({});
-        res.status(200).render('vegetables/Index', { vegetable: foundVegetables })
-    } catch (err) {
-        res.send(err).status(400);
-    }
+   res.json(vegetables);
 })
 
 app.get('/drinks', (req, res) => {
-    try {
-        const foundDrinks =  drinks.find({});
-        res.status(200).render('drinks/Index', { drinks: foundDrinks })
-    } catch (err) {
-        res.send(err).status(400);
-    }
+    res.json(drinks);
 });
 
 // N - NEW - GET  - *  CREATE * but this is a view that allows user inputs
@@ -130,32 +120,29 @@ app.get('/vegetables/new', (req, res) => {
     res.render('vegetables/New');
 });
 
-//E - EDIT - GET  - *  UPDATE * but this a view that allows user inputs
+//E - EDIT - GET  - *  UPDATE * but this is a view that allows user inputs
 app.get('/meats/:id/edit', (req, res) => {
-    try {
-        const foundMeat = meats.findById(req.params.id);
-        res.render('meats/Edit', { meat: foundMeat });
-    } catch (err) {
-        res.send(err).status(400);
+    if (req.params.id >= 0 && req.params.id < meats.length) {
+        res.render('meats/Edit', { meat: meats[req.params.id], id: req.params.id });
+    } else {
+        res.send('<p>That is not a valid id</p>')
     }
-});
+})
 
-app.get('/vegetables/:id/edit',  (req, res) => {
-    try {
-        const foundVegetable =  vegetables.findById(req.params.id);
-        res.render('vegetables/Edit', { vegetable: foundVegetable });
-    } catch (err) {
-        res.send(err).status(400);
+// E - Edit
+app.get('/vegetables/:id/edit', (req, res) => {
+    if (req.params.id >= 0 && req.params.id < vegetables.length) {
+        res.render('vegetables/Edit', { vegetable: vegetables[req.params.id], id: req.params.id });
+    } else {
+        res.send('<p>That is not a valid id</p>')
     }
-});
-
+})
 
 app.get('/drinks/:id/edit', (req, res) => {
-    try {
-        const foundDrink = drinks.findById(req.params.id);
-        res.render('drinks/Edit', { drink: foundDrink });
-    } catch (err) {
-        res.send(err).status(400);
+    if (req.params.id >= 0 && req.params.id < drinks.length) {
+        res.render('drinks/Edit', { drink: drinks[req.params.id], id: req.params.id });
+    } else {
+        res.send('<p>That is not a valid id</p>')
     }
 });
 

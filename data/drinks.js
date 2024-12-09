@@ -2,19 +2,19 @@ const drinks = [
     {
         name: 'coffee',
         color: 'dark-brown',
-        image: '/drinks/decafe.jpg',
+        image: '/images/drinks/coffee.jpg',
         caffeine: false,
     },
     {
         name: 'cocoa',
         color: 'brown',
-        image: '/drinks/cocoa.jpg',
+        image: '/images/drinks/cocoa.jpg',
         caffeine: true,
     },
     {
         name: 'water',
         color: 'clear',
-        image: '/drinks/water.jpg',
+        image: '/images/drinks/water.jpg',
         caffeine: false
     },
 ]

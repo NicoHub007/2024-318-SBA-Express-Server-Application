@@ -16,10 +16,10 @@ router.get('/', (req, res) => {
 })
 
 // N - NEW - allows a user to input a new meat
-router.get('/new', (req, res) => {
-    // the 'meats/New' in the render needs to be pointing to something in my views folder
-    res.render('meats/New');
-})
+// router.get('/new', (req, res) => {
+//     // the 'meats/New' in the render needs to be pointing to something in my views folder
+//     res.render('meats/New');
+// })
 
 // DELETE
 router.delete('/:id', (req, res) => {
