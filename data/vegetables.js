@@ -2,37 +2,31 @@ const vegetables = [
     {
         name: 'cauliflower',
         color: 'white',
-        image: '/vegetables/cauliflower.jpg',
-        spoiled: false,
+        image: '/images/vegetables/cauliflower.jpg',
+        isItFresh: false,
     },
     {
         name: 'collard greens',
         color: 'yellow',
-        image: '/vegetables/collard-greens.jpg',
-        spoiled: true,
+        image: '/images/vegetables/collard.jpg',
+        isItFresh: true,
     },
     {
         name: 'broccoli',
         color: 'green',
-        image: '/vegetables/broccoli.jpg',
+        image: '/images/vegetables/broccoli.jpg',
         isItFresh: false
-    },
-    {
-        name: 'lettuce',
-        color: 'brown',
-        image: '/vegetables/lettuce.jpg',
-        isItFresh: true,
     },
     {
         name: 'carrots',
         color: 'orange',
-        image: '/vegetables/carrots.jpg',
+        image: '/images/vegetables/carrots.jpg',
         isItFresh: false,
     },
     {
         name: 'beetroots',
         color: 'red',
-        image: '/vegetables/beetroots.jpg',
+        image: '/images/vegetables/beetroot.jpg',
         isItFresh: false,
     },
 ]

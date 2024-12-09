@@ -3,14 +3,14 @@ const meats = [
         name: 'chicken',
         cut: 'whole',
         quality: 'choice',
-        image: '/images/meats/chicken.jpg',
+        image: '/images/meats/wholechicken.jpg',
         isItFresh: false,
     },
     {
         name: 'beef',
         cut: 'chuck',
         quality: 'prime',
-        image: '/images/meats/beef-chuck.jpg',
+        image: '/images/meats/beefchuck.jpg',
         isItFresh: true,
     },
     {
@@ -24,21 +24,21 @@ const meats = [
         name: 'pork',
         cut: 'back rib',
         quality: 'select',
-        image: '/images/meats/pork.jpg',
+        image: '/images/meats/porkrib.jpg',
         isItFresh: true,
     },
     {
         name: 'turkey',
         cut: 'breast',
         quality: 'choice',
-        image: '/images/meats/turkey.jpg',
+        image: '/images/meats/turkeybreast.jpg',
         isItFresh: false,
     },
     {
         name: 'duck',
         cut: 'wings',
         quality: 'select',
-        image: '/images/meats/duck.jpg',
+        image: '/images/meats/duckwing.jpg',
         isItFresh: true,
     }
 ]

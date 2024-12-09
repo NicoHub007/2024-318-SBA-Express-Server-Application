@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jsxViewEngine = require('jsx-view-engine');
 const methodOverride = require('method-override');
+const path = require('path');
 const  meats = require('./data/meats');
 const vegetables = require('./data/vegetables');
+const drinks = require('./data/drinks');
 
 const PORT = 3000;
 const app = express();
@@ -11,6 +13,7 @@ const app = express();
 // import the meats and vegetables routes that I need
 const meatRoutes = require('./routes/meats');
 const vegetableRoutes = require('./routes/vegetables');
+const drinksRoutes = require('./routes/drinks');
 
 // View engine setup
 // set up the view engine to be able to use it
@@ -24,7 +27,15 @@ app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 app.use('/styles',express.static('public/styles'));
+app.use('/images', express.static('public/images'));
 
+// Middleware to serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Routes
+app.get('/', (req, res) => {
+    res.send('Image Resizing Server is running...');
+});
 
 // below is custom middleware, meaning that we wrote the code that we wanted to be executed
 app.use((req, res, next) => {
@@ -61,6 +72,7 @@ app.use((req, res, next) => {
 // add in the meats and vegetables routes that were imported
 app.use('/api/meats', meatRoutes); 
 app.use('/api/vegetables', vegetableRoutes);
+app.use('/api/drinks', drinksRoutes);
 
 // create routes to represent the different requests
 // define the route
@@ -94,11 +106,20 @@ app.get('/meats', (req, res) => {
 app.get('/vegetables', (req, res) => {
     try {
         const foundVegetables =  vegetables.find({});
-        res.status(200).render('vegetables/Index', { vegetables: foundVegetables })
+        res.status(200).render('vegetables/Index', { vegetable: foundVegetables })
     } catch (err) {
         res.send(err).status(400);
     }
 })
+
+app.get('/drinks', (req, res) => {
+    try {
+        const foundDrinks =  drinks.find({});
+        res.status(200).render('drinks/Index', { drinks: foundDrinks })
+    } catch (err) {
+        res.send(err).status(400);
+    }
+});
 
 // N - NEW - GET  - *  CREATE * but this is a view that allows user inputs
 app.get('/meats/new', (req, res) => {
@@ -123,6 +144,16 @@ app.get('/vegetables/:id/edit',  (req, res) => {
     try {
         const foundVegetable =  vegetables.findById(req.params.id);
         res.render('vegetables/Edit', { vegetable: foundVegetable });
+    } catch (err) {
+        res.send(err).status(400);
+    }
+});
+
+
+app.get('/drinks/:id/edit', (req, res) => {
+    try {
+        const foundDrink = drinks.findById(req.params.id);
+        res.render('drinks/Edit', { drink: foundDrink });
     } catch (err) {
         res.send(err).status(400);
     }
