@@ -94,7 +94,7 @@ router.get('/:id/Edit', (req, res) => {
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     if (id >= 0 && id < Vegetable.length) {
-        res.render('vegetables/Show', { vegetables: Vegetable[id], id });
+        res.render('vegetables/Show', { vegetable: Vegetable[id], id });
     } else {
         res.status(404).send('<p>That is not a valid id</p>');
     }

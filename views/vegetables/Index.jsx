@@ -6,20 +6,27 @@ class Index extends React.Component {
         const { vegetables } = this.props;
         return (
             <DefaultLayout title="Vegetables Inventory">
-                <ul>
+                <header>
+                    <h1>Vegetables Inventory</h1>
+                </header>
+                <div className="add-container">
+                    <a href="/api/vegetables/new" className="add-button">Add New Vegetable</a>
+                </div>
+                <ul className="list">
                     {vegetables.map((vegetable, index) => (
                         <li key={index}>
                             <img src={vegetable.image} alt={vegetable.name} />
                             <h2>{vegetable.name}</h2>
-                            <a href={`/api/vegetables/${index}`}>Details</a> |
-                            <a href={`/api/vegetables/${index}/edit/`}>Edit</a>
-                            <form action={`/api/vegetables/${index}?_method=DELETE`} method="POST">
-                                <input type="submit" value="DELETE" />
-                            </form>
+                            <nav>
+                                <a href={`/api/vegetables/${index}`}>Details</a>
+                                <a href={`/api/vegetables/${index}/edit/`}>Edit</a>
+                                <form action={`/api/vegetables/${index}?_method=DELETE`} method="POST">
+                                    <input type="submit" value="DELETE" />
+                                </form>
+                            </ nav>
                         </li>
                     ))}
                 </ul>
-                <a href="/api/vegetables/new">Add New Vegetable</a>
             </DefaultLayout>
         );
     }

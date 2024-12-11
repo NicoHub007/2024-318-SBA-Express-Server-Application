@@ -67,9 +67,6 @@ router.patch('/:id', (req, res) => {
 // CREATE
 router.post('/', (req, res) => {
     console.log(req.body)
-    // you should check this when you first start, but then get rid of this console.log
-    // console.log(req.body);
-    // need to add logic to change the check or not checked to true or false
     if (req.body.caffeine === 'on') { // if checked, req.body.isItFresh is set to 'on'
         req.body.caffeine = true;
     } else { // if not checked, req.body.caffeine is undefined

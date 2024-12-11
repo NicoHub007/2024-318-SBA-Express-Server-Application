@@ -12,14 +12,13 @@ class DefaultLayout extends React.Component {
                     <header>
                         <h1>G!M | Grilling Inventory Manager</h1>
                         <nav>
-                            <a href="/api/meats">Meats</a> |  <a href="/api/vegetables">Vegetables</a> |
-                            <a href="/api/drinks">Drinks</a> 
+                            <a href="/api/meats">Meats</a><a href="/api/vegetables">Vegetables</a><a href="/api/drinks">Drinks</a> 
                         </nav>
                     </header>
                     <main>
                         {this.props.children}
                     </main>
-                    <footer>
+                    <footer className="footer">
                         <p>&copy; 2025 Grilling Inventory Manager | G!M</p>
                     </footer>
                 </body>

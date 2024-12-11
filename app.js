@@ -79,26 +79,6 @@ app.use('/api/meats', meatRoutes);
 app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/drinks', drinksRoutes);
 
-// create routes to represent the different requests
-// define the route
-// define the method
-// start with the get request
-// general format of the request
-// app.get(route, function)
-// the route is what the client or user types in for the request
-// the function is how we respond
-app.get('/', (req, res) => {
-    res.send(
-        '<div>this is my home</div>'
-    );
-})
-
-app.get('/index', (req, res) => {
-    res.send(
-        '<h1>This is an index</h1>'
-    )
-})
-
 app.get('/meats', (req, res) => {
     res.json(meats);
 })
