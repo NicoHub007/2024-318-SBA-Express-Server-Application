@@ -79,6 +79,13 @@ app.use('/api/meats', meatRoutes);
 app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/drinks', drinksRoutes);
 
+// I - Index - GET - READ - display all of the elements
+
+app.get('/', (req, res) => {
+    res.render('index', { meats: meats, vegetables: vegetables, drinks: drinks });
+})
+
+// C - Create - POST - CREATE * this adds new data
 app.get('/meats', (req, res) => {
     res.json(meats);
 })
@@ -89,15 +96,6 @@ app.get('/vegetables', (req, res) => {
 
 app.get('/drinks', (req, res) => {
     res.json(drinks);
-});
-
-// N - NEW - GET  - *  CREATE * but this is a view that allows user inputs
-app.get('/meats/new', (req, res) => {
-    res.render('meats/New');
-})
-
-app.get('/vegetables/new', (req, res) => {
-    res.render('vegetables/New');
 });
 
 //E - EDIT - GET  - *  UPDATE * but this is a view that allows user inputs
