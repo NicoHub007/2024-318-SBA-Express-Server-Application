@@ -9,8 +9,10 @@ class DefaultLayout extends React.Component {
                     <title>Grilling Inventory Manager</title>
                 </head>
                 <body>
-                    <header>
-                        <h1>G!M | Grilling Inventory Manager</h1>
+                    <header className = 'layout'>
+                        <h1>
+                            <a href="/">G!M</a> | Grilling Inventory Manager
+                        </h1>
                         <nav>
                             <a href="/api/meats">Meats</a><a href="/api/vegetables">Vegetables</a><a href="/api/drinks">Drinks</a> 
                         </nav>

@@ -98,31 +98,31 @@ app.get('/drinks', (req, res) => {
     res.json(drinks);
 });
 
-//E - EDIT - GET  - *  UPDATE * but this is a view that allows user inputs
-app.get('/meats/:id/edit', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < meats.length) {
-        res.render('meats/Edit', { meat: meats[req.params.id], id: req.params.id });
-    } else {
-        res.send('<p>That is not a valid id</p>')
-    }
-})
+// //E - EDIT - GET  - *  UPDATE * but this is a view that allows user inputs
+// app.get('/meats/:id/edit', (req, res) => {
+//     if (req.params.id >= 0 && req.params.id < meats.length) {
+//         res.render('meats/Edit', { meat: meats[req.params.id], id: req.params.id });
+//     } else {
+//         res.send('<p>That is not a valid id</p>')
+//     }
+// })
 
-// E - Edit
-app.get('/vegetables/:id/edit', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < vegetables.length) {
-        res.render('vegetables/Edit', { vegetable: vegetables[req.params.id], id: req.params.id });
-    } else {
-        res.send('<p>That is not a valid id</p>')
-    }
-})
+// // E - Edit
+// app.get('/vegetables/:id/edit', (req, res) => {
+//     if (req.params.id >= 0 && req.params.id < vegetables.length) {
+//         res.render('vegetables/Edit', { vegetable: vegetables[req.params.id], id: req.params.id });
+//     } else {
+//         res.send('<p>That is not a valid id</p>')
+//     }
+// })
 
-app.get('/drinks/:id/edit', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < drinks.length) {
-        res.render('drinks/Edit', { drink: drinks[req.params.id], id: req.params.id });
-    } else {
-        res.send('<p>That is not a valid id</p>')
-    }
-});
+// app.get('/drinks/:id/edit', (req, res) => {
+//     if (req.params.id >= 0 && req.params.id < drinks.length) {
+//         res.render('drinks/Edit', { drink: drinks[req.params.id], id: req.params.id });
+//     } else {
+//         res.send('<p>That is not a valid id</p>')
+//     }
+// });
 
 // start the server
 app.listen(PORT, () => {
