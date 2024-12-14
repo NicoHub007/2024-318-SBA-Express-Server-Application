@@ -56,7 +56,7 @@ const drinks = [
     {
         name: 'kombucha',
         color: 'brown',
-        image: '/images/drinks/kombucha.jpg',
+        image: '/images/drinks/kombucha1.jpg',
         caffeine: true,
     },
     {

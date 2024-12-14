@@ -1,31 +1,63 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f9f9f9;
-}
+    background-color: #c4c4c4;
+    font-weight: bold;
+*/
+
+body {
+        margin: 0 auto;
+        padding: 0 20px;
+        max-width: 700px;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #c4c4c4, #f5f5f5);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* Space between header, content, and footer */
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+    }
+
+
 
 header {
+    width:100%;
     background: #555454;
     color: #fff;
-    padding: 10px 20px;
+    padding: 5px 0px 5px 0px;
     text-align: center;
     border-radius: 0 0 15px 15px;
-    border: 2px solid #583232;
+    border: 2px solid#b4d6eb84;
+}
+
+footer {
+    width: 100%;
+    padding: 2px 2px 10px 10px;
+    background-color: #333;
+    border: 2px solid #b4d6eb84;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    color: white;
+    margin-top: auto;
+    /* Pushes footer to the bottom */
 }
 
  .layout {
     background: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 0px 15px 4px;
     text-align: center;
-    border: 2px solid #054268;
     border-radius: 0 0 0 0;
 }
 
-header h1 {
-    margin: 0;
+h1 {
+    color: #231111
 }
 
 .add-container {
@@ -36,8 +68,8 @@ header h1 {
 
 .add-button {
     display: inline-block;
-    background: #28a745;
-    color: #fff;
+    background: #095f1d;
+    color: #341a1a;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
@@ -45,7 +77,7 @@ header h1 {
 }
 
 .add-button:hover {
-    background: #218838;
+    background: #4b8758;
 }
 
 .list {
@@ -58,7 +90,7 @@ header h1 {
 }
 
 .list li {
-    background: #fff;
+    background: #676666;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -91,7 +123,7 @@ h2 {
 }
 
 .actions a {
-    background: #007bff;
+    background: #05376d;
     color: #fff;
     padding: 8px 12px;
     text-decoration: none;
@@ -101,13 +133,23 @@ h2 {
 }
 
 .actions a:hover {
-    background: #0056b3;
+    background: #0a6fda;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    color: #512222;
+
 }
 
 form input[type="submit"] {
-    background: #ff4d4d;
+    background: #512222;
     border: none;
     color: #fff;
+    font-weight: bold;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -115,7 +157,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    background: #e60000;
+    background: #b76666;
 }
 
 nav a {
@@ -124,7 +166,7 @@ nav a {
     margin: 5px;
     text-decoration: none;
     color: white;
-    background-color: #007BFF;
+    background-color: #0d427a;
     border: none;
     border-radius: 5px;
     font-family: Arial, sans-serif;
@@ -132,19 +174,10 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #0056b3;
+    background-color: #1079e9;
     transform: scale(1.05);
     color: white;
 }
-
-.footer p{
-    text-align: center;
-    padding: 10px;
-    color: #888;
-    font-size: 14px;
-    margin-top: 20px;
-}
-
 
 /********* For the Show Views ********/
 /* General container styles */
@@ -182,6 +215,7 @@ nav a:hover {
     align-items: flex-start;
     gap: 10px;
     text-align: left;
+    color:#512222
 }
 
 .details h1 {
@@ -208,7 +242,7 @@ nav a:hover {
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #07305b;
     color: white;
     border: none;
     border-radius: 5px;

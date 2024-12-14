@@ -5,11 +5,12 @@ class New extends React.Component {
     render() {
         return (
             <DefaultLayout title="Add New Meat">
-                <form action="/api/meats" method="POST">
-                    Name: <input type="text" name="name" /><br />
-                    Cut: <input type="text" name="cut" /><br />
-                    Quality: <input type="text" name="quality" /><br />
-                    Is It Fresh: <input type="checkbox" name="isItFresh" /><br />
+                <h1>Add New Meat</h1>
+                <form action="/api/meats" method="POST"> <br />
+                    Name: <input type="text" name="name" /> <br />
+                    Cut: <input type="text" name="cut" /> <br /> 
+                    Quality: <input type="text" name="quality" /> <br />
+                    Is It Fresh: <input type="checkbox" name="isItFresh" /> <br />
                     <input type="submit" value="Add Meat" />
                 </form>
             </DefaultLayout>
